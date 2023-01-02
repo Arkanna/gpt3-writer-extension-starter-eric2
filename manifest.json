@@ -1,8 +1,11 @@
 {
-  "name": "GPT-3 Writer",
-  "description": "Write a blog post in the style of your favorite thinker anywhere!",
+
+  "name": "Making Patents Easier to Understand",
+ 
+  "description": "Unlock the Secrets of Patents: Understand Them Easily",
   "version": "1.0",
   "manifest_version": 3,
+ 
   "icons": {
     "48": "assets/48.png",
     "72": "assets/72.png",
@@ -11,6 +14,20 @@
   },
   "action": {
     "default_popup": "index.html",
-    "default_title": "Generate blog post"
-  }
+    "default_title": "Unlock Patent Secrets"
+  },
+
+  "background": {
+    "service_worker": "scripts/contextMenuServiceWorker.js"
+  },
+
+
+  "permissions": ["contextMenus", "tabs", "storage"],
+  "host_permissions": ["https://*/*"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["scripts/content.js"]
+    }
+  ]
 }
